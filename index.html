@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YFinance Stock Analyzer Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>YFinance Stock Analysis Dashboard</h1>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="tickerInput" placeholder="Enter Stock Ticker (e.g., AAPL)">
+            <button id="searchButton">Analyze Stock</button>
+        </div>
+
+        <section id="stockData" class="data-section" style="display: none;">
+            <h2>Stock Details</h2>
+            <p id="symbolDisplay">Ticker: -</p>
+            <p id="priceDisplay">Current Price: -</p>
+            <p id="changeDisplay">Daily Change: -</p>
+            <p id="marketCapDisplay">Market Cap: -</p>
+            <p id="trailingPE">P/E Ratio: -</p>
+        </section>
+
+        <section id="chartSection" class="data-section" style="display: none;">
+            <h2>Historical Price Chart (Last 30 Days)</h2>
+            <canvas id="priceChart"></canvas>
+        </section>
+
+        <section id="statusMessage" class="message-section"></section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 YFinance Powered Analysis</p>
+    </footer>
+
+    <button class="chatbot-toggler" id="chatToggler">🤖</button>
+    
+    <div class="chatbot" id="chatbotWindow">
+        <header>
+            <h2>Stock Assistant Chat</h2>
+            <span class="close-btn" id="chatCloser">&times;</span>
+        </header>
+        <ul class="chatbox" id="chatbox">
+            <li class="chat incoming">
+                <p>Hello! Ask me any quick questions about stocks or finance. (Powered by Groq)</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." required></textarea>
+            <span id="send-btn">Send</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
