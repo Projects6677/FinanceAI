@@ -3,51 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YFinance Stock Analyzer Pro</title>
+    <title>THE ULTIMATE Stock Analyzer | Powered by YFinance & Groq</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
 </head>
 <body>
+    <div id="preloader">
+        <div class="loader-spinner"></div>
+        <p>Loading Financial Matrix...</p>
+    </div>
+
     <header>
-        <h1>YFinance Stock Analysis Dashboard</h1>
-    </header>
-    <main>
+        <div class="logo">FINANCE MATRIX</div>
         <div class="search-container">
-            <input type="text" id="tickerInput" placeholder="Enter Stock Ticker (e.g., AAPL)">
-            <button id="searchButton">Analyze Stock</button>
+            <input type="text" id="tickerInput" placeholder="Enter Ticker (e.g., MSFT, GOOG)" autocomplete="off">
+            <button id="searchButton">ANALYZE</button>
         </div>
+    </header>
 
-        <section id="stockData" class="data-section" style="display: none;">
-            <h2>Stock Details</h2>
-            <p id="symbolDisplay">Ticker: -</p>
-            <p id="priceDisplay">Current Price: -</p>
-            <p id="changeDisplay">Daily Change: -</p>
-            <p id="marketCapDisplay">Market Cap: -</p>
-            <p id="trailingPE">P/E Ratio: -</p>
-        </section>
-
-        <section id="chartSection" class="data-section" style="display: none;">
-            <h2>Historical Price Chart (Last 30 Days)</h2>
-            <canvas id="priceChart"></canvas>
+    <main>
+        <section id="market-highlights" class="market-grid">
+            <h2>GLOBAL MARKET INDICES</h2>
+            <div id="market-SPY" class="market-card">
+                <h3>S&P 500 (SPY)</h3>
+                <p class="price-data" data-price="0.00">$---</p>
+                <p class="change-data" data-change="0.00">%---</p>
+            </div>
+            <div id="market-DIA" class="market-card">
+                <h3>DOW (DIA)</h3>
+                <p class="price-data" data-price="0.00">$---</p>
+                <p class="change-data" data-change="0.00">%---</p>
+            </div>
+            <div id="market-QQQ" class="market-card">
+                <h3>NASDAQ (QQQ)</h3>
+                <p class="price-data" data-price="0.00">$---</p>
+                <p class="change-data" data-change="0.00">%---</p>
+            </div>
         </section>
 
         <section id="statusMessage" class="message-section"></section>
+
+        <div class="analysis-container">
+            <section id="stockData" class="data-section detail-panel" style="display: none;">
+                <h2 id="currentTicker"></h2>
+                <div class="price-box">
+                    <p class="price-current" id="priceDisplay">$---</p>
+                    <p class="change-current" id="changeDisplay">---</p>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item"><span>Market Cap:</span><p id="marketCapDisplay">---</p></div>
+                    <div class="info-item"><span>P/E Ratio:</span><p id="trailingPE">---</p></div>
+                    <div class="info-item"><span>52W High:</span><p id="fiftyTwoWeekHigh">---</p></div>
+                    <div class="info-item"><span>52W Low:</span><p id="fiftyTwoWeekLow">---</p></div>
+                    <div class="info-item"><span>Volume:</span><p id="volumeDisplay">---</p></div>
+                    <div class="info-item"><span>Exchange:</span><p id="exchangeDisplay">---</p></div>
+                </div>
+            </section>
+
+            <section id="chartSection" class="data-section chart-panel" style="display: none;">
+                <h2>Historical Price Chart (30 Days)</h2>
+                <canvas id="priceChart"></canvas>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 YFinance Powered Analysis</p>
+        <p>&copy; 2024 Finance Matrix | YFinance & Groq Integration</p>
     </footer>
 
     <button class="chatbot-toggler" id="chatToggler">🤖</button>
     
     <div class="chatbot" id="chatbotWindow">
         <header>
-            <h2>Stock Assistant Chat</h2>
+            <h2>AI Stock Assistant</h2>
             <span class="close-btn" id="chatCloser">&times;</span>
         </header>
         <ul class="chatbox" id="chatbox">
             <li class="chat incoming">
-                <p>Hello! Ask me any quick questions about stocks or finance. (Powered by Groq)</p>
+                <p>Hello! I'm your AI Stock Assistant. Ask me anything about finance!</p>
             </li>
         </ul>
         <div class="chat-input">
